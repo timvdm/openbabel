@@ -53,8 +53,9 @@ jobs:
       shell: cmake -P {0}
       run: |
           set(msvc_deps_url "https://github.com/openbabel/msvc-dependencies/archive/master.zip")
-          file(DOWNLOAD "${msvc_deps_url}" ./msvc_deps.zip SHOW_PROGRESS)
-          execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf ./msvc_deps.zip)
+          file(DOWNLOAD "${msvc_deps_url}" "$ENV{GITHUB_WORKSPACE}/msvc_deps.zip" SHOW_PROGRESS)
+          execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf "$ENV{GITHUB_WORKSPACE}/msvc_deps.zip")
+          file(READ "$ENV{GITHUB_WORKSPACE}/msvc-dependencies-master/include/Eigen/src/Core/util/Macros.h" _eigen3_version_header)
     - name: Install Dependencies (macOS)
       if: runner.os == 'macOS'
       run: brew install ninja swig eigen boost
