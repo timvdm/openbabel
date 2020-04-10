@@ -47,7 +47,7 @@ jobs:
       if: runner.os == 'Windows'
       run: |
           choco install ninja
-          echo "::set-env name=DEPS::msvc-dependencies-master"
+          echo "::set-env name=DEPS::$GITHUB_WORKSPACE/msvc-dependencies-master"
     - name: Install MSVC Dependencies
       if: runner.os == 'Windows'
       shell: cmake -P {0}
@@ -56,7 +56,6 @@ jobs:
           file(DOWNLOAD "${msvc_deps_url}" "$ENV{GITHUB_WORKSPACE}/msvc_deps.zip" SHOW_PROGRESS)
           execute_process(COMMAND ${CMAKE_COMMAND} -E tar xvf "$ENV{GITHUB_WORKSPACE}/msvc_deps.zip")
           file(READ "$ENV{GITHUB_WORKSPACE}/msvc-dependencies-master/include/Eigen/src/Core/util/Macros.h" _eigen3_version_header)
-          file(READ "$ENV{GITHUB_WORKSPACE}/msvc-dependencies-master/include/Eigen/src/Core/util/ShouldFail.h" _eigen3_version_header_fail)
     - name: Install Dependencies (macOS)
       if: runner.os == 'macOS'
       run: brew install ninja swig eigen boost
