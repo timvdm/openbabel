@@ -40,6 +40,9 @@ jobs:
     steps:
     - name: Check variables
       run: echo "${{runner.os}} ${{matrix.config.os}} ${{matrix.config.cc}}"
+    
+    - uses: actions/checkout@v2
+      
     - name: Install Dependencies (Linux)
       if: runner.os == 'Linux'
       run: sudo apt-get -qq install ninja-build swig libeigen3-dev libboost-all-dev
@@ -65,8 +68,6 @@ jobs:
     - name: Install Dependencies (macOS)
       if: runner.os == 'macOS'
       run: brew install ninja swig eigen boost
-
-    - uses: actions/checkout@v2
 
     - name: Configure
       run: |
