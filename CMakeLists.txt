@@ -6,17 +6,13 @@ endif()
 project(openbabel)
 set(CMAKE_MODULE_PATH ${openbabel_SOURCE_DIR}/cmake/modules)
 
-message(STATUS "listing files in GITHUB_WORKSPACE")
+message(STATUS "Listing files in GITHUB_WORKSPACE:")
 file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/*")
-message(STATUS ${workspace_files})
+foreach(workspace_file ${workspace_files})
+  message(STATUS ${workspace_file})
+endforeach()
 
-message(STATUS "listing files in GITHUB_WORKSPACE/../build")
-file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/../build/*")
-message(STATUS ${workspace_files})
 
-message(STATUS "listing files in GITHUB_WORKSPACE/..")
-file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/../*")
-message(STATUS ${workspace_files})
 
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
