@@ -10,8 +10,8 @@ message(STATUS "listing files in GITHUB_WORKSPACE")
 file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/*")
 message(STATUS ${workspace_files})
 
-message(STATUS "listing files in GITHUB_WORKSPACE/build")
-file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/build/*")
+message(STATUS "listing files in GITHUB_WORKSPACE/../build")
+file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/../build/*")
 message(STATUS ${workspace_files})
 
 message(STATUS "listing files in GITHUB_WORKSPACE/..")
