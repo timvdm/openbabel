@@ -6,8 +6,8 @@ endif()
 project(openbabel)
 set(CMAKE_MODULE_PATH ${openbabel_SOURCE_DIR}/cmake/modules)
 
-
-file(GLOB RECURSE $ENV{GITHUB_WORKSPACE} workspace_files)
+message(STATUS "listing files in GITHUB_WORKSPACE")
+file(GLOB RECURSE workspace_files $ENV{GITHUB_WORKSPACE})
 message(STATUS ${workspace_files})
 
 if(COMMAND cmake_policy)
