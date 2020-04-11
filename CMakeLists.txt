@@ -6,6 +6,10 @@ endif()
 project(openbabel)
 set(CMAKE_MODULE_PATH ${openbabel_SOURCE_DIR}/cmake/modules)
 
+
+file(GLOB RECURSE $ENV{GITHUB_WORKSPACE} workspace_files)
+message(STATUS ${workspace_files})
+
 if(COMMAND cmake_policy)
   cmake_policy(SET CMP0003 NEW)
   if(POLICY CMP0042)
