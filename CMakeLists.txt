@@ -7,7 +7,15 @@ project(openbabel)
 set(CMAKE_MODULE_PATH ${openbabel_SOURCE_DIR}/cmake/modules)
 
 message(STATUS "listing files in GITHUB_WORKSPACE")
-file(GLOB_RECURSE workspace_files "$ENV{GITHUB_WORKSPACE}/*")
+file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/*")
+message(STATUS ${workspace_files})
+
+message(STATUS "listing files in GITHUB_WORKSPACE/build")
+file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/build/*")
+message(STATUS ${workspace_files})
+
+message(STATUS "listing files in GITHUB_WORKSPACE/..")
+file(GLOB workspace_files "$ENV{GITHUB_WORKSPACE}/../*")
 message(STATUS ${workspace_files})
 
 if(COMMAND cmake_policy)
